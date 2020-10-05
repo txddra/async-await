@@ -55,13 +55,13 @@ let levelPower = (level) => {
                 hitPoints: 70,
                 strength: 4
             });
-    });
+    });x
 };
 
-async function login(name, email) => {
+async function login(name, email) {
     try{
     let first = await loginUser(name);
-    let second = await level(first.name);
+    let second = await level(first);
     let third = await levelPower(second);
 
     console.log(`${first} is an ${second} player with ${levelPower.strength} strength and ${levelPower.hitPoints} hit points.`)
@@ -69,6 +69,8 @@ async function login(name, email) => {
 console.log(`User Not Logged in`)
     }
 }
+
+login(`mitch`, `mitch@me.com`)
 
 // 2.
 // Write an async function getUsersEmails
