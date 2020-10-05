@@ -60,7 +60,10 @@ let levelPower = (level) => {
 
 async function login(name, email) => {
     let first = await loginUser(name);
-    let second = await level(first.name)
+    let second = await level(first.name);
+    let third = await levelPower(second);
+
+    console.log(`${first} is an ${second} player with ${levelPower.strength} strength and ${levelPower.hitPoints} hit points.`)
 }
 
 // 2.
