@@ -1,4 +1,4 @@
-1.
+// 1.
 // Here are 3 functions that return promises
 // 1st function creates a random number and refactors the name
 // 2nd function decides the level of the user
@@ -12,40 +12,58 @@
 // Do not edit loginUser, level or levelPower except to test the error variable
 // log the error message in your function so that it shows the message if reject has been called
 
-// const loginUser = (name) => {
-//   return new Promise((resolve, reject) => {
-//     const error = false;
-//     let random = Math.floor(Math.random() * 98);
+const loginUser = (name) => {
+    return new Promise((resolve, reject) => {
+        const error = false;
+        let random = Math.floor(Math.random() * 98);
 
-//     error
-//       ? reject('User Not logged in')
-//       : resolve({ name: `The ${name}-Meister`, random });
-//   });
-// };
+        error
+            ?
+            reject('User Not logged in') :
+            resolve({
+                name: `The ${name}-Meister`,
+                random
+            });
+    });
+};
 
-// let level = (levelNumber) => {
-//   return new Promise((resolve, reject) => {
-//     levelNumber === 0
-//       ? reject('User had no power and is expired')
-//       : levelNumber < 32
-//       ? resolve('amateur')
-//       : levelNumber < 65
-//       ? resolve('intermediate')
-//       : resolve('advanced');
-//   });
-// };
+let level = (levelNumber) => {
+    return new Promise((resolve, reject) => {
+        levelNumber === 0 ?
+            reject('User had no power and is expired') :
+            levelNumber < 32 ?
+            resolve('amateur') :
+            levelNumber < 65 ?
+            resolve('intermediate') :
+            resolve('advanced');
+    });
+};
 
-// let levelPower = (level) => {
-//   return new Promise((resolve, reject) => {
-//     return 'advanced'
-//       ? resolve({ hitPoints: 200, strength: 10 })
-//       : 'intermediate'
-//       ? resolve({ hitPoints: 100, strength: 7 })
-//       : resolve({ hitPoints: 70, strength: 4 });
-//   });
-// };
+let levelPower = (level) => {
+    return new Promise((resolve, reject) => {
+        return 'advanced' ?
+            resolve({
+                hitPoints: 200,
+                strength: 10
+            }) :
+            'intermediate' ?
+            resolve({
+                hitPoints: 100,
+                strength: 7
+            }) :
+            resolve({
+                hitPoints: 70,
+                strength: 4
+            });
+    });
+};
 
-2.
+async function login(name, email) => {
+    let first = await loginUser(name);
+    let second = await level(first.name)
+}
+
+// 2.
 // Write an async function getUsersEmails
 // Using fetch, it should call the given url
 // const url1 = 'https://randomuser.me/api/?results=10';
@@ -64,7 +82,7 @@
 // isabella.carroll@example.com
 // jake.owens@example.com
 
-3.
+// 3.
 // Write an async function getFilms
 // using axios, it should call the given url
 // let url = 'https://ghibliapi.herokuapp.com/films';
